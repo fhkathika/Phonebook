@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Profile">
+    <android.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/update"
+        android:layout_marginLeft="200dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_update_black_24dp"
+        android:visibility="visible"/>
+></android.widget.Toolbar>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_perm_identity_black_24dp"/>
+        <TextView
+
+            android:id="@+id/textid"
+         android:layout_weight="1"
+       android:layout_marginRight="200dp"
+            android:layout_width="match_parent"
+         android:textSize="50sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#ffffffff"
+            android:layout_height="100dp"
+            android:hint="name"
+         android:gravity="center"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        />
+
+    <LinearLayout
+      android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/numberid"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+           android:textSize="20sp"
+            android:hint="number"
+            android:layout_gravity="start"
+
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
