@@ -76,23 +76,32 @@ public class MainActivity extends AppCompatActivity {
         //seach
         searchView=findViewById(R.id.searchView);
         listView.setTextFilterEnabled(true);
-searchView.addTextChangedListener(new TextWatcher() {
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int before, int count) {
-        contactInfoadapter.getFilter().filter(s.toString());
-        Log.i(Tag,""+ s);
-    }
 
-    @Override
-    public void onTextChanged(CharSequence charSequence, int start, int count, int after) {
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int before, int count) {}
 
-    }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int count, int after) {
+                if(TextUtils.isEmpty(s.toString())){
+                    reinitialize(contactlist);
+                }
 
-    @Override
-    public void afterTextChanged(Editable s) {
+                ArrayList<ContactInfo> filterList = new ArrayList<>();
 
-    }
-});
+                for (ContactInfo obj : contactlist){
+                    Log.i(Tag,""+ obj.getContactlistName() +" check with "+s.toString());
+                    if(obj.getContactlistName().toLowerCase().contains(s.toString().toLowerCase())){
+                        filterList.add(obj);
+                    }
+                }
+
+                reinitialize(filterList);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
 
 //        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
@@ -204,14 +213,14 @@ searchView.addTextChangedListener(new TextWatcher() {
 //        searchView.setSubmitButtonEnabled(true);
 //        searchView.setQueryHint("search here");
 //}
-public void reinitialize( ArrayList<ContactInfo> contactlist){
+    public void reinitialize( ArrayList<ContactInfo> contactlist){
 
-//    Phonebook_CustomAdapter contactInfoadapter = new Phonebook_CustomAdapter(contactlist, context);
-//    listView.setAdapter(contactInfoadapter);
-//
-//    contactInfoadapter.notifyDataSetChanged();
+        Phonebook_CustomAdapter contactInfoadapter = new Phonebook_CustomAdapter(contactlist, context);
+        listView.setAdapter(contactInfoadapter);
 
-}
+       contactInfoadapter.notifyDataSetChanged();
+
+    }
 
     final public void initiallizeListview() {
                 contactlist = new ArrayList<>();
